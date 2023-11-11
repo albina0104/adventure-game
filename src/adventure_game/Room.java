@@ -4,7 +4,7 @@ public abstract class Room {
 
     public abstract String getName();
 
-    abstract void printAvailableActionsInRoom();
+    abstract void printChoices();
 
-    abstract int chooseAction();
+    abstract Choice chooseAction();
 }

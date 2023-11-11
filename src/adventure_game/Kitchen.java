@@ -1,8 +1,20 @@
 package adventure_game;
 
+import java.util.ArrayList;
+
 public class Kitchen extends Room {
 
     private static final String name = "bedroom";
+    private static final ArrayList<Choice> choices = new ArrayList<>();
+
+    static {
+        choices.add(new Choice(
+                "eat",
+                () -> {
+                    System.out.println("Mmm, the food is so yummy!");
+                }
+        ));
+    }
 
     @Override
     public String getName() {
@@ -10,12 +22,12 @@ public class Kitchen extends Room {
     }
 
     @Override
-    void printAvailableActionsInRoom() {
+    void printChoices() {
 
     }
 
     @Override
-    int chooseAction() {
-        return 0;
+    Choice chooseAction() {
+        return ChoiceHelper.chooseAction(choices);
     }
 }
