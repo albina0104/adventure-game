@@ -1,32 +1,16 @@
 package adventure_game;
 
-import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.Scanner;
 
 public final class Player {
     private final EnumMap<Stats, Integer> stats = new EnumMap<>(Stats.class);
     private Room location;
-    private static final ArrayList<Choice> choices = new ArrayList<>();
 
     public Player() {
         stats.put(Stats.health, 100);
         stats.put(Stats.hunger, 0);
         stats.put(Stats.sleep, 100);
         location = new Bedroom();
-
-        choices.add(new Choice(
-                "check what you can do here",
-                () -> {
-                    System.out.println("You have plenty things to do in the room!");
-                }
-        ));
-        choices.add(new Choice(
-                "go to another room",
-                () -> {
-                    System.out.println("Which room would you like to go to?");
-                }
-        ));
     }
 
     public void printStats() {
@@ -43,24 +27,10 @@ public final class Player {
     public void chooseAction() {
         System.out.println("----What would you like to do?----");
 
-        for (int i = 0; i < choices.size(); i++) {
-            Choice choice = choices.get(i);
-            System.out.println((i + 1) + " - " + choice.getDescription());
-        }
+        PathChooser.printChoices();
+        Choice choice = PathChooser.chooseAction();
+        choice.doAction();
 
-        System.out.print("Please enter the number you choose: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int choiceId;
-        do {
-            choiceId = scanner.nextInt();
-            choiceId--;
-            // TO DO: create isValidChoice(), check and display error message if not valid
-        } while (choiceId < 0 || choiceId >= choices.size()); // (!isValidChoice)
-        // also, all choice logic should be moved to another class
-
-        System.out.println("Your choice is: " + (choiceId+1) + " - " + choices.get(choiceId).getDescription());
-        choices.get(choiceId).doAction();
         System.out.println("Game over");
     }
 
