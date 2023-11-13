@@ -29,9 +29,7 @@ public final class Player {
 
         PathChooser.printChoices();
         Choice choice = PathChooser.chooseAction();
-        choice.doAction();
-
-        System.out.println("Game over");
+        choice.doAction(this);
     }
 
 

@@ -10,7 +10,7 @@ public class Bedroom extends Room {
     static {
         choices.add(new Choice(
                 "sleep",
-                () -> {
+                player -> {
                     System.out.println("Sleeping is so good!");
                 }
         ));
