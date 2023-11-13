@@ -44,20 +44,15 @@ public class ChoiceHelper {
         do {
             roomId = scanner.nextInt();
             roomId--;
-            if (isInvalidRoom(rooms, roomId)) {
+            if (isInvalidChoice(rooms, roomId)) {
                 System.out.print("Your choice is invalid. Please choose again: ");
             }
-        } while (isInvalidRoom(rooms, roomId));
+        } while (isInvalidChoice(rooms, roomId));
 
         return rooms.get(roomId);
     }
 
-    private static boolean isInvalidChoice(ArrayList<Choice> choices, int choiceId) {
+    private static boolean isInvalidChoice(ArrayList<?> choices, int choiceId) {
         return choiceId < 0 || choiceId >= choices.size();
     }
-
-    private static boolean isInvalidRoom(ArrayList<Room> rooms, int roomId) {
-        return roomId < 0 || roomId >= rooms.size();
-    }
-
 }
