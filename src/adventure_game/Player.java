@@ -21,14 +21,14 @@ public final class Player {
     }
 
     public void printCurrentLocation() {
-        System.out.println("You are now in the " + location.getName() + ".");
+        System.out.println("You are now in the " + location.getDescription() + ".");
     }
 
     public void chooseAction() {
         System.out.println("----What would you like to do?----");
 
         PathChooser.printChoices();
-        Choice choice = PathChooser.chooseAction();
+        ActionChoice choice = PathChooser.chooseAction();
         choice.doAction(this);
     }
 

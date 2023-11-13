@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Kitchen extends Room {
 
     private static final String name = "kitchen";
-    private static final ArrayList<Choice> choices = new ArrayList<>();
+    private static final ArrayList<ActionChoice> choices = new ArrayList<>();
 
     static {
-        choices.add(new Choice(
+        choices.add(new ActionChoice(
                 "eat",
                 player -> {
                     System.out.println("Mmm, the food is so yummy!");
@@ -17,7 +17,7 @@ public class Kitchen extends Room {
     }
 
     @Override
-    public String getName() {
+    public String getDescription() {
         return name;
     }
 
@@ -28,6 +28,6 @@ public class Kitchen extends Room {
 
     @Override
     Choice chooseAction() {
-        return ChoiceHelper.chooseAction(choices);
+        return ChoiceHelper.makeChoice(choices);
     }
 }

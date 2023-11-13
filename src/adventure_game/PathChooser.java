@@ -3,18 +3,18 @@ package adventure_game;
 import java.util.ArrayList;
 
 public class PathChooser {
-    private static final ArrayList<Choice> choices = new ArrayList<>();
+    private static final ArrayList<ActionChoice> choices = new ArrayList<>();
     private static final ArrayList<Room> rooms = new ArrayList<>();
 
     static {
-        choices.add(new Choice(
+        choices.add(new ActionChoice(
                 "check what you can do here",
                 player -> {
                     System.out.println("You have plenty things to do in the room!");
                     // need to choose from list of choices in the room
                 }
         ));
-        choices.add(new Choice(
+        choices.add(new ActionChoice(
                 "go to another room",
                 player -> {
                     System.out.println("---Which room would you like to go to?---");
@@ -28,7 +28,7 @@ public class PathChooser {
         rooms.add(new Kitchen());
     }
 
-    public static ArrayList<Choice> getChoices() {
+    public static ArrayList<ActionChoice> getChoices() {
         return choices;
     }
 
@@ -36,15 +36,15 @@ public class PathChooser {
         ChoiceHelper.printChoices(choices);
     }
 
-    public static Choice chooseAction() {
-        return ChoiceHelper.chooseAction(choices);
+    public static ActionChoice chooseAction() {
+        return (ActionChoice) ChoiceHelper.makeChoice(choices);
     }
 
 
     private static void printRooms() {
-        ChoiceHelper.printRooms(rooms);
+        ChoiceHelper.printChoices(rooms);
     }
     private static Room chooseRoom() {
-        return ChoiceHelper.chooseRoom(rooms);
+        return (Room) ChoiceHelper.makeChoice(rooms);
     }
 }

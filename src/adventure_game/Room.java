@@ -1,8 +1,10 @@
 package adventure_game;
 
-public abstract class Room {
+import java.util.function.Consumer;
 
-    public abstract String getName();
+public abstract class Room extends Choice {
+
+    public abstract String getDescription();
 
     abstract void printChoices();
 
