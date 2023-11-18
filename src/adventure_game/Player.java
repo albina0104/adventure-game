@@ -8,7 +8,7 @@ public final class Player {
 
     public Player() {
         stats.put(Stats.health, 100);
-        stats.put(Stats.hunger, 0);
+        stats.put(Stats.hunger, 100);
         stats.put(Stats.sleep, 100);
         location = new Bedroom();
     }
@@ -32,38 +32,40 @@ public final class Player {
         choice.doAction(this);
     }
 
-
-    public void chooseRoom() {
-
+    public int[] getStats() {
+        return new int[]{ this.getHealthScore(), this.getHungerScore(), this.getSleepScore() };
     }
 
-    public void chooseActionInRoom() {
-
+    public void changeStats(int healthChange, int hungerChange, int sleepChange) {
+        this.setHealthScore(this.getHealthScore() + healthChange);
+        this.setHungerScore(this.getHungerScore() + hungerChange);
+        this.setSleepScore(this.getSleepScore() + sleepChange);
+        printStats();
     }
 
-//    public int getHealthScore() {
-//        return healthScore;
-//    }
-//
-//    public void setHealthScore(int healthScore) {
-//        this.healthScore = healthScore;
-//    }
-//
-//    public int getHungerScore() {
-//        return hungerScore;
-//    }
-//
-//    public void setHungerScore(int hungerScore) {
-//        this.hungerScore = hungerScore;
-//    }
-//
-//    public int getSleepScore() {
-//        return sleepScore;
-//    }
-//
-//    public void setSleepScore(int sleepScore) {
-//        this.sleepScore = sleepScore;
-//    }
+    public int getHealthScore() {
+        return stats.get(Stats.health);
+    }
+
+    public void setHealthScore(int healthScore) {
+        stats.put(Stats.health, healthScore);
+    }
+
+    public int getHungerScore() {
+        return stats.get(Stats.hunger);
+    }
+
+    public void setHungerScore(int hungerScore) {
+        stats.put(Stats.hunger, hungerScore);
+    }
+
+    public int getSleepScore() {
+        return stats.get(Stats.sleep);
+    }
+
+    public void setSleepScore(int sleepScore) {
+        stats.put(Stats.sleep, sleepScore);
+    }
 
     public Room getLocation() {
         return location;
@@ -71,5 +73,6 @@ public final class Player {
 
     public void setLocation(Room location) {
         this.location = location;
+        printCurrentLocation();
     }
 }

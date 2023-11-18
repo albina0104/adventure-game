@@ -10,8 +10,10 @@ public class PathChooser {
         choices.add(new ActionChoice(
                 "check what you can do here",
                 player -> {
-                    System.out.println("You have plenty things to do in the room!");
-                    // need to choose from list of choices in the room
+                    System.out.println("You have plenty things to do here!");
+                    player.getLocation().printChoices();
+                    ActionChoice choice = (ActionChoice) player.getLocation().chooseAction();
+                    choice.doAction(player);
                 }
         ));
         choices.add(new ActionChoice(
@@ -20,7 +22,6 @@ public class PathChooser {
                     System.out.println("---Which room would you like to go to?---");
                     printRooms();
                     player.setLocation(chooseRoom());
-                    player.printCurrentLocation();
                 }
         ));
 

@@ -7,6 +7,11 @@ public class AdventureGameMain {
 
         player.printStats();
         player.printCurrentLocation();
-        player.chooseAction();
+
+        do {
+            player.chooseAction();
+        } while (player.getHealthScore() >= 0);
+
+        System.out.println("Game over! You are dead.");
     }
 }

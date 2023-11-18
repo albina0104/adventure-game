@@ -12,6 +12,7 @@ public class Bedroom extends Room {
                 "sleep",
                 player -> {
                     System.out.println("Sleeping is so good!");
+                    player.changeStats(5, -10, 100);
                 }
         ));
     }
@@ -27,7 +28,7 @@ public class Bedroom extends Room {
     }
 
     @Override
-    public Choice chooseAction() {
-        return ChoiceHelper.makeChoice(choices);
+    public ActionChoice chooseAction() {
+        return (ActionChoice) ChoiceHelper.makeChoice(choices);
     }
 }

@@ -12,6 +12,7 @@ public class Kitchen extends Room {
                 "eat",
                 player -> {
                     System.out.println("Mmm, the food is so yummy!");
+                    player.changeStats(5, 30, -10);
                 }
         ));
     }
@@ -23,7 +24,7 @@ public class Kitchen extends Room {
 
     @Override
     void printChoices() {
-
+        ChoiceHelper.printChoices(choices);
     }
 
     @Override
