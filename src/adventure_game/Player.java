@@ -3,6 +3,8 @@ package adventure_game;
 import java.util.EnumMap;
 
 public final class Player {
+    private static final int MIN_SCORE = 0;
+    private static final int MAX_SCORE = 100;
     private final EnumMap<Stats, Integer> stats = new EnumMap<>(Stats.class);
     private Room location;
 
@@ -48,7 +50,7 @@ public final class Player {
     }
 
     public void setHealthScore(int healthScore) {
-        stats.put(Stats.health, healthScore);
+        stats.put(Stats.health, keepScoreInsideBounds(healthScore));
     }
 
     public int getHungerScore() {
@@ -56,7 +58,7 @@ public final class Player {
     }
 
     public void setHungerScore(int hungerScore) {
-        stats.put(Stats.hunger, hungerScore);
+        stats.put(Stats.hunger, keepScoreInsideBounds(hungerScore));
     }
 
     public int getSleepScore() {
@@ -64,7 +66,13 @@ public final class Player {
     }
 
     public void setSleepScore(int sleepScore) {
-        stats.put(Stats.sleep, sleepScore);
+        stats.put(Stats.sleep, keepScoreInsideBounds(sleepScore));
+    }
+
+    private int keepScoreInsideBounds(final int score) {
+        if (score < MIN_SCORE) return MIN_SCORE;
+        if (score > MAX_SCORE) return MAX_SCORE;
+        return score;
     }
 
     public Room getLocation() {
