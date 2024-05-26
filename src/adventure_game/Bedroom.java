@@ -1,11 +1,12 @@
 package adventure_game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bedroom extends Room {
 
     private static final String name = "bedroom";
-    private static final ArrayList<ActionChoice> choices = new ArrayList<>();
+    private static final List<ActionChoice> choices = new ArrayList<>();
 
     static {
         choices.add(new ActionChoice(

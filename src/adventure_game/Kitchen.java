@@ -1,12 +1,13 @@
 package adventure_game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Kitchen extends Room {
 
     private static final String name = "kitchen";
-    private static final ArrayList<ActionChoice> choices = new ArrayList<>();
+    private static final List<ActionChoice> choices = new ArrayList<>();
 
     static {
         choices.add(new ActionChoice(

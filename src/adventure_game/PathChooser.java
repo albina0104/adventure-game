@@ -1,10 +1,11 @@
 package adventure_game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PathChooser {
-    private static final ArrayList<ActionChoice> choices = new ArrayList<>();
-    private static final ArrayList<Room> rooms = new ArrayList<>();
+    private static final List<ActionChoice> choices = new ArrayList<>();
+    private static final List<Room> rooms = new ArrayList<>();
 
     static {
         choices.add(new ActionChoice(
@@ -29,7 +30,7 @@ public class PathChooser {
         rooms.add(new Kitchen());
     }
 
-    public static ArrayList<ActionChoice> getChoices() {
+    public static List<ActionChoice> getChoices() {
         return choices;
     }
 
